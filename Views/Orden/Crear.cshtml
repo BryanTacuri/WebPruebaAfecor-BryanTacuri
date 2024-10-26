@@ -1,0 +1,38 @@
+﻿@model WebPruebaAfecor.Models.OrdenCompra
+
+<div class="container mt-4">
+    <h2>Agregar Nueva Orden</h2>
+    <hr />
+    <form asp-action="Crear" method="post">
+        <div class="form-group mb-3">
+            <label for="cliente" class="form-label">Nombre del Cliente</label>
+            <select id="cliente" asp-for="NombreCliente" class="form-control" required>
+                <option value="">Seleccione un cliente</option>
+                @foreach (var cliente in ViewBag.Clientes as List<string>)
+                {
+                    <option value="@cliente">@cliente</option>
+                }
+            </select>
+        </div>
+        <div class="form-group mb-3">
+            <label for="producto" class="form-label">Producto</label>
+            <select id="producto" asp-for="NombreProducto" class="form-control" required>
+                <option value="">Seleccione un producto</option>
+                @foreach (var producto in ViewBag.Productos as List<string>)
+                {
+                    <option value="@producto">@producto</option>
+                }
+            </select>
+        </div>
+        <div class="form-group mb-3">
+            <label asp-for="FechaOrden" class="form-label">Fecha de la Orden</label>
+            <input asp-for="FechaOrden" type="date" class="form-control" required />
+        </div>
+        <div class="form-group mb-3">
+            <label asp-for="TotalOrden" class="form-label">Total de la Orden</label>
+            <input asp-for="TotalOrden" type="number" step="0.01" class="form-control" placeholder="Ingrese el total de la orden" required />
+        </div>
+        <button type="submit" class="btn btn-success"><i class="fas fa-save"></i> Guardar</button>
+        <a asp-action="Index" class="btn btn-secondary"><i class="fas fa-arrow-left"></i> Volver</a>
+    </form>
+</div>

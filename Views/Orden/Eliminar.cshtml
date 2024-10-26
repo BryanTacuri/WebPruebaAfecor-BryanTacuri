@@ -1,0 +1,22 @@
+﻿@model WebPruebaAfecor.Models.OrdenCompra
+
+<div class="container mt-4">
+    <h2>Eliminar Orden</h2>
+    <hr />
+    <h4>¿Está seguro de que desea eliminar esta orden?</h4>
+    <dl class="row">
+        <dt class="col-sm-3">Cliente</dt>
+        <dd class="col-sm-9">@Model.NombreCliente</dd>
+        <dt class="col-sm-3">Producto</dt>
+        <dd class="col-sm-9">@Model.NombreProducto</dd>
+        <dt class="col-sm-3">Fecha</dt>
+        <dd class="col-sm-9">@Model.FechaOrden.ToString("dd/MM/yyyy")</dd>
+        <dt class="col-sm-3">Total</dt>
+        <dd class="col-sm-9">$@Model.TotalOrden</dd>
+    </dl>
+    <form asp-action="Eliminar" method="post">
+        <input type="hidden" asp-for="IdOrden" />
+        <button type="submit" class="btn btn-danger"><i class="fas fa-trash-alt"></i> Confirmar</button>
+        <a asp-action="Index" class="btn btn-secondary"><i class="fas fa-arrow-left"></i> Cancelar</a>
+    </form>
+</div>
